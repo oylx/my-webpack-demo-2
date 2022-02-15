@@ -5,11 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Current TS File",
+      "name": "调试 Node.js 程序 - args",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+      "args": [
+        "${workspaceFolder}/dist.js"
+      ]
+    },
+    {
+      "name": "调试bundle程序",
       "type": "node",
       "request": "launch",
       "args": [
-        "${workspaceRoot}/bundler_1.ts" // 入口文件
+        "${workspaceRoot}/bundler_3.ts" // 入口文件
       ],
       "runtimeArgs": [
         "--nolazy",

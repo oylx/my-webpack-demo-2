@@ -42,9 +42,6 @@ function collectCodeAndDeps(filepath: string) {
   const result = babel.transformFromAstSync(ast, code, {
     presets: ["@babel/preset-env"],
   });
-  console.log("======================");
-
-  console.log(result?.code);
 
   writeFileSync("./project_1/test.es5.js", result?.code || "");
 

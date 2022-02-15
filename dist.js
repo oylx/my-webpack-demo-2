@@ -89,7 +89,6 @@ function execute(key) {
     var projectPath = (dirname + path)
       .replace(/\.\//g, "")
       .replace(/\/\//, "/");
-    console.log(path, projectPath);
     return projectPath;
   };
   // 创建 require 函数
