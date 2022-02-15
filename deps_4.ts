@@ -6,8 +6,6 @@ import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
 import { readFileSync } from "fs";
 import { resolve, relative, dirname } from "path";
-import * as babel from "@babel/core";
-import { writeFileSync } from "fs";
 
 // 设置根目录
 const projectRoot = resolve(__dirname, "project_1");
@@ -30,24 +28,10 @@ function collectCodeAndDeps(filepath: string) {
   }
   // 获取文件内容，将内容放至 depRelation
   const code = readFileSync(filepath).toString();
-  const es5Code = babel.transform(code, {
-    presets: ["@babel/preset-env"],
-  })?.code;
   // 初始化 depRelation[key]
-  depRelation[key] = { deps: [], code: es5Code || "" };
+  depRelation[key] = { deps: [], code: code };
   // 将代码转为 AST
   const ast = parse(code, { sourceType: "module" });
-
-  // 转换代码
-  const result = babel.transformFromAstSync(ast, code, {
-    presets: ["@babel/preset-env"],
-  });
-  console.log("======================");
-
-  console.log(result?.code);
-
-  writeFileSync("./project_1/test.es5.js", result?.code || "");
-
   // 分析文件依赖，将内容放至 depRelation
   traverse(ast, {
     enter: (path) => {

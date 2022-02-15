@@ -1,20 +1,19 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true,
+  value: true
 });
 exports["default"] = void 0;
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
 
-var _b = _interopRequireDefault(require("./b.js"));
+var _a = _interopRequireDefault(require("./a.js"));
 
-var a = {
-  value: "a",
-  gerB: function gerB() {
-    return _b["default"].value + " from a/js";
-  },
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var b = {
+  value: "b",
+  getA: function getA() {
+    return _a["default"].value + " from b.js";
+  }
 };
-var _default = a;
+var _default = b;
 exports["default"] = _default;
